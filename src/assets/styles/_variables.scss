@@ -1,0 +1,30 @@
+@import "colors"; 
+
+// 🅰️ Typographie
+$font-family: "Public Sans", sans-serif;
+
+// Tailles de texte
+$font-size-1: 32px;
+$font-size-2: 20px;
+$font-size-3: 16px;
+$font-size-4: 14px;
+$font-size-5: 12px;
+
+// Gras ou normal
+$font-weight-regular: 400;
+$font-weight-bold: 700;
+
+// Hauteur de ligne
+$line-height-120: 120%;
+$line-height-150: 150%;
+
+
+// 📏 Spacing (marges, paddings, gaps)
+$spacing-500: 40px;
+$spacing-400: 32px;
+$spacing-300: 24px;
+$spacing-250: 20px;
+$spacing-200: 16px;
+$spacing-150: 12px;
+$spacing-100: 8px;
+$spacing-50: 4px;
