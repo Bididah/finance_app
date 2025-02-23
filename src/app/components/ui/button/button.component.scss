@@ -1,0 +1,75 @@
+button {
+  display: flex;
+  padding: var(--spacing-200);
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-100);
+  flex: 1 0 0;
+  border: 0;
+  border-radius: var(--spacing-100);
+
+  &.primary {
+    background: var(--grey900);
+    color: var(--white);
+
+    &:hover {
+      background: var(--beige500);
+    }
+  }
+
+  &.secondary {
+    background: var(--beige100);
+    color: var(--grey900);
+
+    &:hover {
+      background: var(--white, #fff);
+      border: 1px solid var(--beige500, #98908b);
+    }
+  }
+
+  &.tertiary {
+    all: unset;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-150, 12px);
+    color: var(--grey500);
+
+    // add becose of the all: unset
+    font-family: "Public Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 150%;
+
+    &:hover {
+      color: var(--grey900);
+    }
+  }
+
+  &.destroy {
+    background: var(--color-red, #c94736);
+    color: var(--white);
+
+    &:hover {
+      background: linear-gradient(
+          0deg,
+          rgba(255, 255, 255, 0.2) 0%,
+          rgba(255, 255, 255, 0.2) 100%
+        ),
+        var(--color-red, #c94736);
+    }
+  }
+
+  &.large {
+    width: 100%;
+  }
+
+  &.fit {
+    width: fit-content;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
