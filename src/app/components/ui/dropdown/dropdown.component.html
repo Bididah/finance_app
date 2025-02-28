@@ -1,0 +1,39 @@
+<div class="wrapper" #wrapper>
+  <div class='container' [ngClass]="size">
+    <div class="select-container" (click)="toggleDropdown()" [ngClass]="{active: isDropdownOpen}">
+      <div class="left-side">
+        @if(tagColor) {
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="17"
+            viewBox="0 0 16 17"
+            fill="none"
+          >
+            <circle cx="8" cy="8.5" r="8" [attr.fill]="tagColor" />
+          </svg>
+        }
+
+        <div class="custom-dropdown">
+          <div class="selected-option text-preset-4">
+            {{ selectedLabel || 'Selectioner...' }}
+          </div>
+        </div>
+      </div>
+      <img src="assets/icons/icon-caret-down.svg" class="icon" alt="icon" />
+    </div>
+  </div>
+
+  @if(isDropdownOpen) {
+    <ul class="dropdown-list">
+      @for(option of options; track option.value) {
+      <li [ngClass]="{'text-preset-4-bold': selectedLabel === option.label}" (click)="selectOption(option)">
+        {{ option.label }}
+      </li>
+      <svg xmlns="http://www.w3.org/2000/svg"  height="2" viewBox="0 0 137 2" fill="none">
+        <path d="M0 1H137" stroke="#F2F2F2"/>
+      </svg>
+      }
+    </ul>
+  }
+</div>
