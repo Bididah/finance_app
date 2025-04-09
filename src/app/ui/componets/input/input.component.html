@@ -18,10 +18,11 @@
       <input
         class="text-preset-4"
         [type]="type"
+        [value]="value"
+        [disabled]="isDisabled"
         [placeholder]="placeholder"
-        (focus)="onFocus()"
         (blur)="onBlur()"
-        (input)="onInput($event)"
+        (input)="onInputChange($event)"
       />
     </div>
 

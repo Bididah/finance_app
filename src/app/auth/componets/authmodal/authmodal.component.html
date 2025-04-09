@@ -6,8 +6,8 @@
   <div class="content">
     <form [formGroup]="form">
       @if( modalType === "Login") {
-        <app-input label="email" type="email" />
-        <app-input label="password" type="password" icon="icon-show-password"  />
+        <app-input label="email" type="email" formControlName="email" />
+        <app-input label="password" type="password" icon="icon-show-password" formControlName="password" />
       } @else {
         <app-input label="email" type="email" />
         <app-input label="password" type="password" />
