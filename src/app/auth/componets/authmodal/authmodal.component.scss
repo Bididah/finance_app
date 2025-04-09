@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  width: 560px;
+  padding: var(--spacing-400, 32px);
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--spacing-400, 32px);
+  border-radius: var(--spacing-150, 12px);
+  background: var(--color-white, #fff);
+
+  .title {
+    color: var(--color-grey-900, #201f24);
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-200, 16px);
+  }
+
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+}

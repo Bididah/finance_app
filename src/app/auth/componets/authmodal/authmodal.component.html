@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="title text-preset-1">
+    {{ modalType }}
+  </div>
+
+  <div class="content">
+    <form [formGroup]="form">
+      @if( modalType === "Login") {
+        <app-input label="email" type="email" />
+        <app-input label="password" type="password" icon="icon-show-password"  />
+      } @else {
+        <app-input label="email" type="email" />
+        <app-input label="password" type="password" />
+      }
+    </form>
+  </div>
+
+  <app-button 
+    size="large" 
+    [label]="modalType" 
+    (clicked)="onLogin()"
+  />
+
+  <div class="footer">
+    @if ( modalType === "Login") {
+    <span class="text-preset-4">Already have an account?</span>
+    <span class="text-preset-4-bold">Sing Up</span>
+    } @else {
+    <span class="text-preset-4">Need to create an account?</span>
+    <span class="text-preset-4-bold">Login</span>
+    }
+  </div>
+</div>

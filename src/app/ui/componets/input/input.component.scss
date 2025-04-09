@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: max-content;
   gap: var(--spacing-50, 4px);
 
   span {
@@ -16,7 +15,7 @@
 
   .input-container {
     display: flex;
-    width: 320px;
+    width: auto;
     padding: var(--spacing-150, 12px) var(--spacing-250, 20px);
     align-items: center;
     gap: var(--spacing-200, 16px);

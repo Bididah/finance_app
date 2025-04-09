@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { ControlValueAccessor, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
@@ -23,7 +23,7 @@ export class InputComponent {
   @Output() blur = new EventEmitter<Event>();
 
   get iconPath(): string {
-    return this.icon ? `assets/icons/${this.icon}.svg` : '';
+    return `assets/icons/${this.icon}.svg` ;
   }
 
   onInput(event: Event): void {
