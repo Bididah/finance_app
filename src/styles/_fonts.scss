@@ -1,0 +1,55 @@
+@font-face {
+  font-family: "Public Sans";
+  src: url("/assets/fonts/PublicSans-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900; /* Supports all weights dynamically */
+  font-style: normal;
+}
+
+.text-preset-1 {
+  font-family: "Public Sans", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 120%;
+}
+
+.text-preset-2 {
+  font-family: "Public Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 120%;
+}
+
+.text-preset-3 {
+  font-family: "Public Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 150%;
+}
+
+.text-preset-4 {
+  font-family: "Public Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.text-preset-4-bold {
+  font-family: "Public Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 150%;
+}
+
+.text-preset-5 {
+  font-family: "Public Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.text-preset-5-bold {
+  font-family: "Public Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 150%;
+}
