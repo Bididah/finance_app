@@ -10,7 +10,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { DropdownOption } from '../interfaces/interface';
+import { DropdownOption } from '../../interfaces/interface';
 
 @Component({
   selector: 'app-dropdown',

@@ -1,40 +1,93 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import {
+  Component,
+  forwardRef,
+  Input,
+  OnInit,
+  Optional,
+  Self,
+} from '@angular/core';
+import {
+  ControlValueAccessor,
+  NG_VALUE_ACCESSOR,
+  NgControl,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-input',
   standalone: true,
   imports: [],
+  providers: [],
   templateUrl: './input.component.html',
-  styleUrl: './input.component.scss',
+  styleUrls: ['./input.component.scss'],
 })
-export class InputComponent {
+export class InputComponent implements ControlValueAccessor, OnInit {
   @Input() label = '';
   @Input() icon: string = '';
   @Input() tagColor = '';
   @Input() textPrefix = '';
   @Input() placeholder = '';
   @Input() type: 'text' | 'email' | 'password' = 'text';
-  @Input() hasError = false;
-  @Input() control = new FormControl();
 
-  @Output() input = new EventEmitter<Event>();
-  @Output() focus = new EventEmitter<Event>();
-  @Output() blur = new EventEmitter<Event>();
+  constructor(@Optional() @Self() public ngcontrol: NgControl) {
+    if (this.ngcontrol) {
+      this.ngcontrol.valueAccessor = this;
+    }
+  }
+
+  value: string = '';
+  isDisabled: boolean = false;
+
+  onChange: any = () => {};
+  onTouched: any = () => {};
 
   get iconPath(): string {
-    return this.icon ? `assets/icons/${this.icon}.svg` : '';
+    return `assets/icons/${this.icon}.svg`;
   }
 
-  onInput(event: Event): void {
-    this.input.emit(event);
+  get control() {
+    return this.ngcontrol?.control;
   }
 
-  onFocus(): void {
-    this.focus.emit();
+  get hasError(): boolean {
+    return !!this.control && this.control.invalid && this.control.touched;
+  }
+
+  get errorText(): string {
+    if (!this.control || !this.control.errors) return '';
+
+    if (this.control.errors['required']) return 'Ce champ est requis';
+    if (this.control.errors['email']) return 'Adresse email invalide';
+    if (this.control.errors['minlength'])
+      return `Minimum ${this.control.errors['minlength'].requiredLength} caractères`;
+
+    return 'Champ invalide';
+  }
+
+  ngOnInit(): void {}
+
+  writeValue(value: any): void {
+    this.value = value;
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.isDisabled = isDisabled;
+  }
+
+  onInputChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    this.value = input.value;
+    this.onChange(this.value);
   }
 
   onBlur(): void {
-    this.input.emit();
+    this.onTouched();
   }
 }

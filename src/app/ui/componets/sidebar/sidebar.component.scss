@@ -1,0 +1,74 @@
+.wrapper {
+  display: flex;
+  width: 300px;
+  overflow: hidden;
+  height: 100vh;
+  padding-bottom: var(--spacing-300, 24px);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-300, 24px);
+  flex-grow: 1;
+  border-radius: 0px var(--spacing-200, 16px) var(--spacing-200, 16px) 0px;
+  background: var(--color-grey-900, #201f24);
+
+  .logo {
+    display: flex;
+    padding: var(--spacing-500, 40px) var(--spacing-400, 32px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--spacing-100, 8px);
+    align-self: stretch;
+  }
+
+  .links {
+    display: flex;
+    width: 300px;
+    max-height: 800px;
+    padding-right: var(--spacing-300, 24px);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-50, 4px);
+    flex-grow: 2;
+    color: #b3b3b3;
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-300, 24px);
+    color: #b3b3b3;
+    justify-content: flex-end;
+  }
+
+  .link {
+    display: flex;
+    height: 56px;
+    padding: var(--spacing-200, 16px) var(--spacing-400, 32px);
+    align-items: center;
+    gap: var(--spacing-200, 16px);
+    align-self: stretch;
+    border-radius: 0px 12px 12px 0px;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--color-grey-100, #f2f2f2);
+
+      svg path {
+        fill: #f2f2f2;
+      }
+    }
+
+    &.active {
+      color: var(--color-grey-900, #201F24);
+      border-radius: 0px 12px 12px 0px;
+      border-left: 4px solid var(--color-green, #277c78);
+      background: var(--color-beige-100, #f8f4f0);
+
+      svg path {
+        fill : #277c78
+      }
+    }
+  }
+}
