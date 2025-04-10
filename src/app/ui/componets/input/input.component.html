@@ -1,6 +1,6 @@
 <div class="container">
   <p class="label text-preset-5-bold">{{ label }}</p>
-  <div class="input-container">
+  <div class="input-container" [class.error]="hasError">
     <div class="left-side">
       @if(tagColor) {
       <svg
@@ -31,7 +31,6 @@
     }
   </div>
   @if(hasError) {
-    <span class="helper-text text-preset-5">error text</span>
+  <span class="error-text text-preset-5">{{ errorText }}</span>
   }
-  
 </div>

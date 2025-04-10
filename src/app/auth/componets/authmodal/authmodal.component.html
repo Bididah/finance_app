@@ -1,28 +1,44 @@
 <div class="container">
   <div class="title text-preset-1">
-    {{ modalType }}
+    {{ type }}
   </div>
 
   <div class="content">
-    <form [formGroup]="form">
-      @if( modalType === "Login") {
-        <app-input label="email" type="email" formControlName="email" />
-        <app-input label="password" type="password" icon="icon-show-password" formControlName="password" />
-      } @else {
-        <app-input label="email" type="email" />
-        <app-input label="password" type="password" />
-      }
+    @if(type === "login") {
+    <form [formGroup]="loginForm">
+      <app-input label="Email" type="email" formControlName="email" />
+      <app-input
+        label="Password"
+        type="password"
+        icon="icon-show-password"
+        formControlName="password"
+      />
     </form>
+    } @else {
+    <form [formGroup]="singUpForm">
+      <app-input label="First Name" type="text" formControlName="firstName" />
+      <app-input label="Last Name" type="text" formControlName="lastName" />
+      <app-input label="Email" type="email" formControlName="email" />
+      <app-input
+        label="Password"
+        type="password"
+        icon="icon-show-password"
+        formControlName="password"
+      />
+      <app-input
+        label="Password confirmation"
+        type="password"
+        icon="icon-show-password"
+        formControlName="confirmationPassword"
+      />
+    </form>
+    }
   </div>
 
-  <app-button 
-    size="large" 
-    [label]="modalType" 
-    (clicked)="onLogin()"
-  />
+  <app-button size="large" [label]="type" (clicked)="onSubmit()" />
 
   <div class="footer">
-    @if ( modalType === "Login") {
+    @if ( type === "login") {
     <span class="text-preset-4">Already have an account?</span>
     <span class="text-preset-4-bold">Sing Up</span>
     } @else {

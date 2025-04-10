@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: var(--spacing-50, 4px);
+  margin-bottom: var(--spacing-50, 4px);
 
   span {
     color: var(--beige500);
@@ -29,8 +30,13 @@
       border: 1px solid var(--color-grey-900, #201f24);
     }
 
+    &.error {
+      border: 1px solid red;
+    }
+
     input {
       border: none;
+      width: 100%;
 
       &:focus {
         outline: none;
@@ -49,9 +55,9 @@
     }
   }
 
-  .helper-text {
+  .error-text {
     margin: 0;
-    color: var(--grey500);
+    color: red;
     width: 100%;
     text-align: end;
   }
