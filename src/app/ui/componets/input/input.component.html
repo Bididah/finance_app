@@ -27,7 +27,7 @@
     </div>
 
     @if(icon) {
-    <img [src]="iconPath" class="icon" alt="icon" />
+    <img [src]="iconPath" class="icon" alt="icon" (click)="onIconClick()"/>
     }
   </div>
   @if(hasError) {

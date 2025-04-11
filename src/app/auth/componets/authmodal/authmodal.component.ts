@@ -8,6 +8,7 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-authmodal',
@@ -16,12 +17,12 @@ import {
   templateUrl: './authmodal.component.html',
   styleUrl: './authmodal.component.scss',
 })
-export class AuthmodalComponent {
+export class AuthmodalComponent implements OnInit {
   @Input() type!: 'sing up' | 'login';
 
   @Output() submitForm = new EventEmitter();
 
-  constructor(private fb: FormBuilder) {}
+  public subscription = new Subscription();
 
   public loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -40,6 +41,25 @@ export class AuthmodalComponent {
       validators: [this.passwordMatchValidator()],
     }
   );
+
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.subscription.add(
+      this.singUpForm.statusChanges.subscribe(() => {
+        console.log(this.singUpForm.status);
+        const confirmationControl = this.singUpForm.get('confirmationPassword');
+        const hasMisMatch = this.singUpForm.hasError('passwordMismatch');
+
+        if (hasMisMatch) {
+          confirmationControl?.setErrors(
+            { passwordMismatch: true },
+            { emitEvent: false }
+          );
+        }
+      })
+    );
+  }
 
   passwordMatchValidator() {
     return (group: AbstractControl): ValidationErrors | null => {

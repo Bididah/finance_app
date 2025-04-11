@@ -35,7 +35,12 @@
     }
   </div>
 
-  <app-button size="large" [label]="type" (clicked)="onSubmit()" />
+  <app-button
+    size="large"
+    [label]="type"
+    (clicked)="onSubmit()"
+    [disabeld]="type === 'login' ? !loginForm.valid : !singUpForm.valid"
+  />
 
   <div class="footer">
     @if ( type === "login") {
