@@ -6,11 +6,7 @@ import {
   Optional,
   Self,
 } from '@angular/core';
-import {
-  ControlValueAccessor,
-  NG_VALUE_ACCESSOR,
-  NgControl,
-} from '@angular/forms';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
@@ -59,7 +55,8 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     if (this.control.errors['email']) return 'Adresse email invalide';
     if (this.control.errors['minlength'])
       return `Minimum ${this.control.errors['minlength'].requiredLength} caractères`;
-
+    if (this.control.errors['passwordMismatch'])
+      return 'Les mots de passe ne correspondent pas';
     return 'Champ invalide';
   }
 
@@ -85,6 +82,18 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     const input = event.target as HTMLInputElement;
     this.value = input.value;
     this.onChange(this.value);
+  }
+
+  onIconClick(): void {
+    console.log('icon clicked');
+    const isPasswordInput = this.icon.includes('password');
+    if (isPasswordInput) {
+      const isPasswordVisibile = this.type === 'text';
+      this.type = isPasswordVisibile ? 'password' : 'text';
+      this.icon = isPasswordVisibile
+        ? "icon-show-password"
+        : "icon-hide-password";
+    }
   }
 
   onBlur(): void {
