@@ -9,11 +9,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-authmodal',
   standalone: true,
-  imports: [InputComponent, ButtonComponent, ReactiveFormsModule],
+  imports: [InputComponent, ButtonComponent, ReactiveFormsModule, RouterModule],
   templateUrl: './authmodal.component.html',
   styleUrl: './authmodal.component.scss',
 })
