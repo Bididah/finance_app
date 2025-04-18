@@ -44,11 +44,11 @@
 
   <div class="footer">
     @if ( type === "login") {
-    <span class="text-preset-4">Already have an account?</span>
-    <span class="text-preset-4-bold">Sing Up</span>
-    } @else {
     <span class="text-preset-4">Need to create an account?</span>
-    <span class="text-preset-4-bold">Login</span>
+    <span class="text-preset-4-bold link" [routerLink]="['/sing up']">Sing Up</span>
+    } @else {
+    <span class="text-preset-4">Already have an account?</span>
+    <span class="text-preset-4-bold link" [routerLink]="['/login']">Login</span>
     }
   </div>
 </div>

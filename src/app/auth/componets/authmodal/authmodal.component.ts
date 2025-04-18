@@ -9,18 +9,20 @@ import {
   Validators,
 } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { RouterModule } from '@angular/router';
+import { LoginRequest, SingUpRequest, User } from '../../interfaces';
 
 @Component({
   selector: 'app-authmodal',
   standalone: true,
-  imports: [InputComponent, ButtonComponent, ReactiveFormsModule],
+  imports: [InputComponent, ButtonComponent, ReactiveFormsModule, RouterModule],
   templateUrl: './authmodal.component.html',
   styleUrl: './authmodal.component.scss',
 })
 export class AuthmodalComponent implements OnInit {
   @Input() type!: 'sing up' | 'login';
 
-  @Output() submitForm = new EventEmitter();
+  @Output() submitForm = new EventEmitter<LoginRequest | SingUpRequest>();
 
   public subscription = new Subscription();
 
@@ -47,7 +49,6 @@ export class AuthmodalComponent implements OnInit {
   ngOnInit(): void {
     this.subscription.add(
       this.singUpForm.statusChanges.subscribe(() => {
-        console.log(this.singUpForm.status);
         const confirmationControl = this.singUpForm.get('confirmationPassword');
         const hasMisMatch = this.singUpForm.hasError('passwordMismatch');
 
@@ -73,12 +74,24 @@ export class AuthmodalComponent implements OnInit {
   }
 
   onSubmit(): void {
+    let formValue: LoginRequest | SingUpRequest;
     if (this.type === 'login' && this.loginForm.valid) {
-      console.log(this.loginForm);
-      this.submitForm.emit(this.loginForm.value);
+      formValue = {
+        email: this.loginForm.value['email'],
+        password: this.loginForm.value['password'],
+      } as LoginRequest;
+      this.submitForm.emit(formValue);
     } else if (this.type === 'sing up' && this.singUpForm.valid) {
-      console.log(this.singUpForm);
-      this.submitForm.emit(this.singUpForm.value);
+      const user: User = {
+          firstName: this.singUpForm.value['firstName']!,
+          lastName: this.singUpForm.value['lastName']!,
+          email: this.singUpForm.value['email']!,
+        },
+        formValue = {
+          user: user,
+          password: this.singUpForm.value['password'],
+        } as SingUpRequest;
+      this.submitForm.emit(formValue);
     }
   }
 }
