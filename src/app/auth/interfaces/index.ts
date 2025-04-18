@@ -4,13 +4,23 @@ export interface User {
   email: string;
 }
 
-export interface AuthRequest {
+export interface LoginRequest {
+  email: string;
+  password: string;
+}
+
+export interface SingUpRequest {
   user: User;
   password: string;
 }
 
+export interface AuthRespense {
+  token: string;
+  user: User;
+}
+
 export interface ApiRespense<T> {
-  data: T;
-  error: string;
+  data: T | null;
+  error: string | null;
   success: boolean;
 }
