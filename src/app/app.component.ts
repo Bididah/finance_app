@@ -9,20 +9,11 @@ import { AuthmodalComponent } from './auth/componets/authmodal/authmodal.compone
 import { UserAuthComponent } from './auth/componets/userauth/userauth.component';
 import { RouterModule } from '@angular/router';
 
-const COMPONETS = [
-  SidebarComponent,
-  InputComponent,
-  ButtonComponent,
-  DropdownComponent,
-  PaginationComponent,
-  UserAuthComponent,
-  AuthmodalComponent,
-];
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterModule, ...COMPONETS],
+  imports: [CommonModule, RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
