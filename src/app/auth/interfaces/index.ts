@@ -2,6 +2,7 @@ export interface User {
   firstName: string;
   lastName: string;
   email: string;
+  phoneNumber: string;
 }
 
 export interface LoginRequest {
@@ -15,7 +16,7 @@ export interface SingUpRequest {
 }
 
 export interface AuthRespense {
-  token: string;
+  accessToken: string;
   user: User;
 }
 

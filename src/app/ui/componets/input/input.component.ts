@@ -85,7 +85,6 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   }
 
   onIconClick(): void {
-    console.log('icon clicked');
     const isPasswordInput = this.icon.includes('password');
     if (isPasswordInput) {
       const isPasswordVisibile = this.type === 'text';

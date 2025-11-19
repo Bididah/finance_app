@@ -3,17 +3,17 @@ import { UserAuthComponent } from './componets/userauth/userauth.component';
 
 export const AUTH_ROUTES: Routes = [
   {
-    path: "",
+    path: '',
     redirectTo: 'login',
-    pathMatch: "full"
-  }, 
+    pathMatch: 'full',
+  },
   {
     path: 'login',
     component: UserAuthComponent,
     data: { type: 'login' },
   },
   {
-    path: 'sing up',
+    path: 'register',
     component: UserAuthComponent,
     data: { type: 'sing up' },
   },
