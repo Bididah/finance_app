@@ -2,20 +2,17 @@
   <div class="left">
     <div class="sidebar">
       <div class="logo">
-        <img src="assets/icons/logo-large.svg" alt="icon" />
       </div>
       <div class="summary">
-        <div class="text-preset-1">
-          Keep track of your money and save for your future
-        </div>
+        <div class="text-preset-1">Stay in control of your deliveries and move your business forward</div>
         <div class="text-preset-4">
-          Personal finance app puts you in control of your spending. Track
-          transactions, set budgets, and add to savings pots easily.
+          Create shipments in seconds, follow them from pickup to delivery, and keep your clients informed. Fast,
+          simple, and powerful everything you need to manage your transport activity.
         </div>
       </div>
     </div>
   </div>
   <div class="right">
-    <app-authmodal [type]="type" (submitForm)="submit($event)" />
+    <app-authform [type]="type" (submitForm)="submit($event)" />
   </div>
 </div>
